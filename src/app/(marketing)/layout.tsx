@@ -1,6 +1,12 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { YogaGuide } from "@/components/guide/yoga-guide";
 import { auth } from "@/lib/auth";
+
+type LayoutUser = {
+  name?: string | null;
+  role?: string;
+};
 
 export default async function MarketingLayout({
   children,
@@ -8,10 +14,11 @@ export default async function MarketingLayout({
   children: React.ReactNode;
 }) {
   const session = await auth();
-  const user = session?.user
+  const sessionUser = session?.user as LayoutUser | undefined;
+  const user = sessionUser
     ? {
-        name: session.user.name,
-        role: (session.user as any).role ?? "USER",
+        name: sessionUser.name,
+        role: sessionUser.role ?? "USER",
       }
     : null;
 
@@ -22,6 +29,7 @@ export default async function MarketingLayout({
         {children}
       </main>
       <Footer />
+      <YogaGuide />
     </>
   );
 }

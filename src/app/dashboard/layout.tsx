@@ -2,10 +2,16 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { auth, signOut } from "@/lib/auth";
+import { YogaGuide } from "@/components/guide/yoga-guide";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
 export const dynamic = "force-dynamic";
+
+type DashboardUser = {
+  name?: string | null;
+  role?: string;
+};
 
 export default async function DashboardLayout({
   children,
@@ -15,9 +21,11 @@ export default async function DashboardLayout({
   const session = await auth();
   if (!session?.user) redirect("/login?callbackUrl=/dashboard");
 
+  const sessionUser = session.user as DashboardUser;
+
   const user = {
-    name: session.user.name,
-    role: (session.user as any).role ?? "USER",
+    name: sessionUser.name,
+    role: sessionUser.role ?? "USER",
   };
 
   const navItems = [
@@ -79,6 +87,7 @@ export default async function DashboardLayout({
         </div>
       </div>
       <Footer />
+      <YogaGuide />
     </>
   );
 }
