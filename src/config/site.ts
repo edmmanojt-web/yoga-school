@@ -4,10 +4,10 @@
  */
 
 export const siteConfig = {
-  name: "[School Name]",
-  tagline: "Yoga • Breath • Awareness",
+  name: "SAHAJ",
+  tagline: "Traditional Yoga School",
   description:
-    "Explore yoga, breathwork and mindfulness as practices for becoming more aware — on the mat and in everyday life.",
+    "From Practice to Experience. Traditional yoga for the inner journey — Hatha, Pranayama, Meditation and Sadhana, guided progressively from body to experience.",
   url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
   ogImage: "/og-image.jpg",
 
@@ -38,20 +38,20 @@ export const teacherConfig = {
 } as const;
 
 export const journeyConfig = {
-  slug: "7-day-awareness-journey",
-  title: "Yoga Beyond the Mat",
-  subtitle: "A 7-Day Awareness Journey",
-  tagline: "What if yoga didn't begin on the mat?",
+  slug: "sahaj-journey",
+  title: "The Sahaj Journey",
+  subtitle: "From Practice to Experience — 7 Days",
+  tagline: "Yoga is not something to achieve. It is something to experience.",
   description:
-    "A simple 7-day experiment to notice how you think, move, eat, work and respond — without adding another hour to your day.",
+    "A 7-day inner journey through the traditional yogic framework — beginning with the body, moving through breath and mind, and arriving at experience. Ten minutes a day. No beliefs required.",
   days: [
-    { number: 1, title: "Where Is Your Mind?", theme: "Mind", durationMinutes: 10 },
-    { number: 2, title: "Notice the Body", theme: "Body", durationMinutes: 10 },
-    { number: 3, title: "Come Back to the Breath", theme: "Breath", durationMinutes: 10 },
-    { number: 4, title: "Wake Up Your Senses", theme: "Senses", durationMinutes: 10 },
-    { number: 5, title: "Notice Distraction", theme: "Distraction", durationMinutes: 10 },
-    { number: 6, title: "Experience Presence", theme: "Presence", durationMinutes: 15 },
-    { number: 7, title: "Look Back", theme: "Reflection", durationMinutes: 15 },
+    { number: 1, title: "Sharira — Body", theme: "Body", durationMinutes: 10 },
+    { number: 2, title: "Prana — Breath", theme: "Breath", durationMinutes: 10 },
+    { number: 3, title: "Manas — Mind", theme: "Mind", durationMinutes: 10 },
+    { number: 4, title: "Dharana — Awareness", theme: "Awareness", durationMinutes: 10 },
+    { number: 5, title: "Sadhana — Practice", theme: "Practice", durationMinutes: 15 },
+    { number: 6, title: "Mouna — Silence", theme: "Silence", durationMinutes: 15 },
+    { number: 7, title: "Anubhava — Experience", theme: "Experience", durationMinutes: 15 },
   ],
 } as const;
 
@@ -67,15 +67,17 @@ export const offeringCategories = [
 ] as const;
 
 export const navLinks = [
-  { label: "Offerings", href: "/offerings" },
-  { label: "Yoga", href: "/yoga" },
-  { label: "Breathwork", href: "/breathwork" },
-  { label: "Mindfulness", href: "/mindfulness" },
-  { label: "Beyond the Mat", href: "/yoga-beyond-the-mat" },
-  { label: "Workshops", href: "/workshops" },
   { label: "Schedule", href: "/schedule" },
   { label: "Community", href: "/community" },
   { label: "About", href: "/about" },
+];
+
+export const practicesLinks = [
+  { label: "Yoga", href: "/yoga", desc: "Movement & posture" },
+  { label: "Breathwork", href: "/breathwork", desc: "Pranayama & breath" },
+  { label: "Mindfulness", href: "/mindfulness", desc: "Meditation & awareness" },
+  { label: "Workshops", href: "/workshops", desc: "Deeper explorations" },
+  { label: "Retreats", href: "/retreats", desc: "Immersive time away" },
 ];
 
 export const contactInterests = [

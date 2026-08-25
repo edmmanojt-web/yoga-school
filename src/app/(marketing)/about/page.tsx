@@ -15,24 +15,31 @@ export default function AboutPage() {
       {/* Hero */}
       <section
         className="section-padding"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #E8DFC8 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="about-heading"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-sage-500 font-medium mb-4">
+              <p
+                className="font-semibold mb-4"
+                style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+              >
                 The School
               </p>
-              <h1 id="about-heading" className="font-heading text-charcoal-700 mb-6">
+              <h1
+                id="about-heading"
+                className="font-heading mb-6"
+                style={{ color: "#231E1A" }}
+              >
                 About {siteConfig.name}
               </h1>
-              <p className="text-charcoal-500 leading-relaxed mb-4">
+              <p className="leading-relaxed mb-4" style={{ color: "#7B6B5B" }}>
                 {siteConfig.name} is a yoga school offering online and
                 in-person sessions in yoga, breathwork, mindfulness, and
                 meditation.
               </p>
-              <p className="text-charcoal-500 leading-relaxed">
+              <p className="leading-relaxed" style={{ color: "#7B6B5B" }}>
                 Our central belief: yoga is not only something we practice on a
                 mat. It is the quality of awareness we bring to ordinary
                 moments.
@@ -40,13 +47,13 @@ export default function AboutPage() {
             </div>
             <div
               className="aspect-square rounded-3xl flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #D9CDB4, #C5C3BE)" }}
+              style={{ background: "linear-gradient(135deg, #E4D8C8, #D4C8B0)" }}
               role="img"
               aria-label="Yoga school image"
             >
               <div className="text-center">
                 <div className="text-6xl mb-3" aria-hidden="true">🌿</div>
-                <p className="text-charcoal-400 text-sm">[School Photo]</p>
+                <p className="text-sm" style={{ color: "#B0A090" }}>[School Photo]</p>
               </div>
             </div>
           </div>
@@ -54,36 +61,44 @@ export default function AboutPage() {
       </section>
 
       {/* Teacher */}
-      <section className="section-padding bg-white" aria-labelledby="teacher-about">
+      <section className="section-padding bg-[#FEFCF9]" aria-labelledby="teacher-about">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div
               className="aspect-[4/5] rounded-3xl flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #E8DFC8, #D9CDB4)" }}
+              style={{ background: "linear-gradient(135deg, #E4D8C8, #D4C8B0)" }}
               role="img"
               aria-label={`Photo of ${teacherConfig.name}`}
             >
               <div className="text-center">
                 <div className="text-6xl mb-3" aria-hidden="true">🧘</div>
-                <p className="text-charcoal-400 text-sm">[Teacher Photo]</p>
+                <p className="text-sm" style={{ color: "#B0A090" }}>[Teacher Photo]</p>
               </div>
             </div>
             <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-sage-500 font-medium mb-4">
+              <p
+                className="font-semibold mb-4"
+                style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+              >
                 The Teacher
               </p>
-              <h2 id="teacher-about" className="font-heading text-charcoal-700 mb-2">
+              <h2
+                id="teacher-about"
+                className="font-heading mb-2"
+                style={{ color: "#231E1A" }}
+              >
                 {teacherConfig.name}
               </h2>
-              <p className="text-charcoal-400 mb-6">{teacherConfig.title}</p>
-              <p className="text-charcoal-500 leading-relaxed mb-4">
+              <p className="mb-6" style={{ color: "#B0A090" }}>{teacherConfig.title}</p>
+              <p className="leading-relaxed mb-4" style={{ color: "#7B6B5B" }}>
                 {teacherConfig.bio}
               </p>
               <div className="flex flex-wrap gap-2 mt-6">
                 {teacherConfig.specialties.map((s) => (
                   <span
                     key={s}
-                    className="px-3 py-1 rounded-full bg-muted text-xs text-charcoal-500 border border-border"
+                    className="px-3 py-1 rounded-full text-xs border"
+                    style={{ background: "#F6EFE6", color: "#7B6B5B", borderColor: "#E4D8C8" }}
                   >
                     {s}
                   </span>
@@ -96,27 +111,32 @@ export default function AboutPage() {
 
       {/* Philosophy */}
       <section
-        className="section-padding bg-muted"
+        className="section-padding"
+        style={{ background: "#F6EFE6" }}
         aria-labelledby="philosophy-heading"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 id="philosophy-heading" className="font-heading text-charcoal-700 mb-8">
+          <h2
+            id="philosophy-heading"
+            className="font-heading mb-8"
+            style={{ color: "#231E1A" }}
+          >
             Our approach
           </h2>
-          <div className="space-y-6 text-charcoal-500 text-left">
-            <p className="leading-relaxed">
-              We don't believe in a one-size-fits-all approach to yoga. Some
+          <div className="space-y-6 text-left">
+            <p className="leading-relaxed" style={{ color: "#7B6B5B" }}>
+              We don&rsquo;t believe in a one-size-fits-all approach to yoga. Some
               people come wanting to move their body. Others come wanting to
-              calm their mind. Some come because they're curious what yoga
+              calm their mind. Some come because they&rsquo;re curious what yoga
               actually is.
             </p>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed" style={{ color: "#7B6B5B" }}>
               All of these are welcome starting points. Our job is to meet you
-              where you are and help you find what's useful.
+              where you are and help you find what&rsquo;s useful.
             </p>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed" style={{ color: "#7B6B5B" }}>
               The deeper intention behind everything we offer is the same —
-              cultivating awareness. The capacity to notice what's actually
+              cultivating awareness. The capacity to notice what&rsquo;s actually
               happening in this moment, without immediately reacting.
             </p>
           </div>
@@ -124,9 +144,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-white" aria-label="About page CTA">
+      <section className="section-padding bg-[#FEFCF9]" aria-label="About page CTA">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-heading text-charcoal-700 mb-6">
+          <h2
+            className="font-heading mb-6"
+            style={{ color: "#231E1A" }}
+          >
             Ready to explore?
           </h2>
           <div className="flex flex-wrap justify-center gap-4">

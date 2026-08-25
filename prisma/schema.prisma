@@ -1,13 +1,14 @@
 // Yoga School — Database Schema
-// Version: 1.0.0
-// PostgreSQL via Prisma ORM
+// Version: 2.0.0
+// MongoDB via Prisma ORM
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 // ─── Enums ─────────────────────────────────────────────────────
@@ -72,7 +73,7 @@ enum Language {
 // ─── Auth / User ───────────────────────────────────────────────
 
 model User {
-  id                String    @id @default(cuid())
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
   name              String?
   email             String    @unique
   emailVerified     DateTime?
@@ -97,13 +98,12 @@ model User {
   analyticsEvents    AnalyticsEvent[]
   contactSubmissions ContactSubmission[]
 
-  @@index([email])
   @@index([role])
 }
 
 model Profile {
-  id       String  @id @default(cuid())
-  userId   String  @unique
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String  @unique @db.ObjectId
   bio      String?
   photoUrl String?
   location String?
@@ -111,22 +111,20 @@ model Profile {
   website  String?
 
   user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
 }
 
 model Account {
-  id                String  @id @default(cuid())
-  userId            String
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -136,9 +134,9 @@ model Account {
 }
 
 model AuthSession {
-  id           String   @id @default(cuid())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String   @unique
-  userId       String
+  userId       String   @db.ObjectId
   expires      DateTime
 
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -147,6 +145,7 @@ model AuthSession {
 }
 
 model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   identifier String
   token      String   @unique
   expires    DateTime
@@ -157,12 +156,12 @@ model VerificationToken {
 // ─── Offerings ─────────────────────────────────────────────────
 
 model Offering {
-  id               String           @id @default(cuid())
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
   title            String
   slug             String           @unique
   category         OfferingCategory
   shortDescription String
-  description      String           @db.Text
+  description      String
   imageUrl         String?
   mode             SessionMode      @default(HYBRID)
   level            String?
@@ -180,17 +179,16 @@ model Offering {
 
   @@index([category])
   @@index([published])
-  @@index([slug])
 }
 
 // ─── Teachers ──────────────────────────────────────────────────
 
 model Teacher {
-  id          String    @id @default(cuid())
-  userId      String?   @unique
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String?   @unique @db.ObjectId
   name        String
   slug        String    @unique
-  bio         String    @db.Text
+  bio         String
   shortBio    String
   photoUrl    String?
   specialties String[]
@@ -200,18 +198,16 @@ model Teacher {
   updatedAt   DateTime  @updatedAt
 
   sessions    Session[]
-
-  @@index([slug])
 }
 
 // ─── Sessions ──────────────────────────────────────────────────
 
 model Session {
-  id           String        @id @default(cuid())
-  offeringId   String
-  teacherId    String?
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  offeringId   String        @db.ObjectId
+  teacherId    String?       @db.ObjectId
   title        String
-  description  String?       @db.Text
+  description  String?
   startTime    DateTime
   endTime      DateTime
   mode         SessionMode   @default(ONLINE)
@@ -237,9 +233,9 @@ model Session {
 // ─── Bookings ──────────────────────────────────────────────────
 
 model Booking {
-  id          String        @id @default(cuid())
-  userId      String
-  sessionId   String
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String        @db.ObjectId
+  sessionId   String        @db.ObjectId
   status      BookingStatus @default(PENDING)
   notes       String?
   bookedAt    DateTime      @default(now())
@@ -259,11 +255,11 @@ model Booking {
 // ─── Journeys ──────────────────────────────────────────────────
 
 model Journey {
-  id          String    @id @default(cuid())
-  offeringId  String?
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  offeringId  String?   @db.ObjectId
   slug        String    @unique
   title       String
-  description String    @db.Text
+  description String
   subtitle    String?
   imageUrl    String?
   published   Boolean   @default(false)
@@ -277,21 +273,20 @@ model Journey {
   days        JourneyDay[]
   enrollments JourneyEnrollment[]
 
-  @@index([slug])
   @@index([published])
 }
 
 model JourneyDay {
-  id              String   @id @default(cuid())
-  journeyId       String
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  journeyId       String   @db.ObjectId
   dayNumber       Int
   title           String
   subtitle        String?
   theme           String?
   intention       String
   practiceTitle   String
-  practiceContent String   @db.Text
-  observationNote String   @db.Text
+  practiceContent String
+  observationNote String
   durationMinutes Int      @default(10)
   imageUrl        String?
   published       Boolean  @default(true)
@@ -306,9 +301,9 @@ model JourneyDay {
 }
 
 model JourneyEnrollment {
-  id          String        @id @default(cuid())
-  userId      String
-  journeyId   String
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String        @db.ObjectId
+  journeyId   String        @db.ObjectId
   startedAt   DateTime      @default(now())
   completedAt DateTime?
   status      JourneyStatus @default(ACTIVE)
@@ -322,9 +317,9 @@ model JourneyEnrollment {
 }
 
 model JourneyDayProgress {
-  id          String   @id @default(cuid())
-  userId      String
-  dayId       String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  dayId       String   @db.ObjectId
   completedAt DateTime @default(now())
 
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -338,8 +333,8 @@ model JourneyDayProgress {
 // ─── Polls ─────────────────────────────────────────────────────
 
 model Poll {
-  id        String       @id @default(cuid())
-  dayId     String?
+  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  dayId     String?      @db.ObjectId
   question  String
   sortOrder Int          @default(0)
   published Boolean      @default(true)
@@ -352,8 +347,8 @@ model Poll {
 }
 
 model PollOption {
-  id        String         @id @default(cuid())
-  pollId    String
+  id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  pollId    String         @db.ObjectId
   text      String
   sortOrder Int            @default(0)
 
@@ -364,10 +359,10 @@ model PollOption {
 }
 
 model PollResponse {
-  id          String     @id @default(cuid())
-  userId      String
-  pollId      String
-  optionId    String
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String     @db.ObjectId
+  pollId      String     @db.ObjectId
+  optionId    String     @db.ObjectId
   respondedAt DateTime   @default(now())
 
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -382,10 +377,10 @@ model PollResponse {
 // ─── Reflections ───────────────────────────────────────────────
 
 model Reflection {
-  id        String      @id @default(cuid())
-  userId    String
-  dayId     String?
-  content   String      @db.Text
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String      @db.ObjectId
+  dayId     String?     @db.ObjectId
+  content   String
   isPrivate Boolean     @default(true)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
@@ -400,10 +395,10 @@ model Reflection {
 // ─── Community ─────────────────────────────────────────────────
 
 model CommunityPost {
-  id         String         @id @default(cuid())
-  userId     String
+  id         String         @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String         @db.ObjectId
   title      String?
-  content    String         @db.Text
+  content    String
   visibility PostVisibility @default(PRIVATE)
   tags       String[]
   reported   Boolean        @default(false)
@@ -419,10 +414,10 @@ model CommunityPost {
 }
 
 model CommunityComment {
-  id        String        @id @default(cuid())
-  postId    String
-  userId    String
-  content   String        @db.Text
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String        @db.ObjectId
+  userId    String        @db.ObjectId
+  content   String
   reported  Boolean       @default(false)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
@@ -437,10 +432,10 @@ model CommunityComment {
 // ─── Testimonials ──────────────────────────────────────────────
 
 model Testimonial {
-  id          String   @id @default(cuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   authorName  String
   authorTitle String?
-  content     String   @db.Text
+  content     String
   rating      Int?
   published   Boolean  @default(false)
   sortOrder   Int      @default(0)
@@ -450,9 +445,9 @@ model Testimonial {
 // ─── FAQs ──────────────────────────────────────────────────────
 
 model FAQ {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   question  String
-  answer    String   @db.Text
+  answer    String
   category  String?
   sortOrder Int      @default(0)
   published Boolean  @default(true)
@@ -461,14 +456,14 @@ model FAQ {
 // ─── Contact ───────────────────────────────────────────────────
 
 model ContactSubmission {
-  id                String   @id @default(cuid())
-  userId            String?
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String?  @db.ObjectId
   name              String
   email             String
   phone             String?
   interest          String
   preferredLanguage String?
-  message           String   @db.Text
+  message           String
   read              Boolean  @default(false)
   respondedAt       DateTime?
   createdAt         DateTime @default(now())
@@ -483,8 +478,8 @@ model ContactSubmission {
 // ─── Analytics ─────────────────────────────────────────────────
 
 model AnalyticsEvent {
-  id         String   @id @default(cuid())
-  userId     String?
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String?  @db.ObjectId
   sessionId  String?
   event      String
   properties Json?

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const offerings = [
   {
-    icon: <Leaf size={24} className="text-sage-500" aria-hidden="true" />,
+    icon: <Leaf size={24} style={{ color: "#B87D3B" }} aria-hidden="true" />,
     category: "YOGA",
     badge: "Live classes",
     title: "Yoga",
@@ -23,10 +23,9 @@ const offerings = [
     highlights: ["Hatha & Vinyasa", "Yin & Restorative", "Beginner-friendly", "Online & in-person"],
     href: "/yoga",
     cta: "Explore yoga",
-    color: "from-sage-50 to-transparent",
   },
   {
-    icon: <Wind size={24} className="text-forest" aria-hidden="true" />,
+    icon: <Wind size={24} style={{ color: "#6B4A2A" }} aria-hidden="true" />,
     category: "BREATHWORK",
     badge: "Guided sessions",
     title: "Breathwork",
@@ -36,10 +35,9 @@ const offerings = [
     highlights: ["Pranayama basics", "Box breathing", "Coherence breathing", "Stress regulation"],
     href: "/breathwork",
     cta: "Explore breathwork",
-    color: "from-beige-50 to-transparent",
   },
   {
-    icon: <Brain size={24} className="text-terracotta" aria-hidden="true" />,
+    icon: <Brain size={24} style={{ color: "#C8913A" }} aria-hidden="true" />,
     category: "MINDFULNESS",
     badge: "Guided practice",
     title: "Mindfulness & Meditation",
@@ -49,10 +47,9 @@ const offerings = [
     highlights: ["Seated meditation", "Body scan", "Walking mindfulness", "MBSR-informed"],
     href: "/mindfulness",
     cta: "Explore mindfulness",
-    color: "from-terracotta/5 to-transparent",
   },
   {
-    icon: <Compass size={24} className="text-charcoal-600" aria-hidden="true" />,
+    icon: <Compass size={24} style={{ color: "#5A4E44" }} aria-hidden="true" />,
     category: "JOURNEY",
     badge: "Flagship experience",
     title: "Yoga Beyond the Mat",
@@ -62,11 +59,10 @@ const offerings = [
     highlights: ["7 daily practices", "Reflections journal", "Community polls", "Self-paced"],
     href: "/yoga-beyond-the-mat",
     cta: "Learn about the journey",
-    color: "from-forest/5 to-transparent",
     featured: true,
   },
   {
-    icon: <Calendar size={24} className="text-sage-500" aria-hidden="true" />,
+    icon: <Calendar size={24} style={{ color: "#B87D3B" }} aria-hidden="true" />,
     category: "WORKSHOP",
     badge: "Coming soon",
     title: "Workshops",
@@ -76,10 +72,9 @@ const offerings = [
     highlights: ["Half-day intensives", "Philosophy talks", "Seasonal themes", "Limited seats"],
     href: "/workshops",
     cta: "View workshops",
-    color: "from-sage-50 to-transparent",
   },
   {
-    icon: <Users size={24} className="text-terracotta" aria-hidden="true" />,
+    icon: <Users size={24} style={{ color: "#C8913A" }} aria-hidden="true" />,
     category: "COMMUNITY",
     badge: "Members only",
     title: "Community",
@@ -89,18 +84,8 @@ const offerings = [
     highlights: ["Discussion forums", "Journey sharing", "Monthly Q&A", "Peer support"],
     href: "/community",
     cta: "Join the community",
-    color: "from-beige-50 to-transparent",
   },
 ];
-
-const categoryColors: Record<string, string> = {
-  YOGA: "sage",
-  BREATHWORK: "forest",
-  MINDFULNESS: "terracotta",
-  JOURNEY: "default",
-  WORKSHOP: "sage",
-  COMMUNITY: "terracotta",
-};
 
 export default function OfferingsPage() {
   return (
@@ -108,20 +93,24 @@ export default function OfferingsPage() {
       {/* Hero */}
       <section
         className="py-20 px-4 text-center"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #E8DFC8 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="offerings-hero-heading"
       >
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm uppercase tracking-widest text-sage-600 mb-4">
+          <p
+            className="font-semibold mb-4"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+          >
             What we offer
           </p>
           <h1
             id="offerings-hero-heading"
-            className="font-heading text-4xl md:text-5xl text-charcoal-700 mb-6"
+            className="font-heading text-4xl md:text-5xl mb-6"
+            style={{ color: "#231E1A" }}
           >
             Practices for the whole person
           </h1>
-          <p className="text-lg text-charcoal-500 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: "#7B6B5B" }}>
             Everything here begins on the mat — and continues into the rest of your life.
             Choose what resonates, or start with the journey.
           </p>
@@ -134,7 +123,10 @@ export default function OfferingsPage() {
           {offerings.map((offering) => (
             <article
               key={offering.title}
-              className={`relative rounded-2xl border border-border bg-gradient-to-br ${offering.color} bg-white overflow-hidden group ${offering.featured ? "md:col-span-2" : ""}`}
+              className={`relative rounded-2xl overflow-hidden group ${
+                offering.featured ? "md:col-span-2" : ""
+              }`}
+              style={{ background: "#FEFCF9", border: "1px solid #E4D8C8" }}
             >
               {offering.featured && (
                 <div className="absolute top-4 right-4">
@@ -144,38 +136,55 @@ export default function OfferingsPage() {
               <div className={`p-8 ${offering.featured ? "md:flex md:gap-10" : ""}`}>
                 <div className={offering.featured ? "md:flex-1" : ""}>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-white rounded-xl shadow-sm">
+                    <div
+                      className="p-2 rounded-xl shadow-sm"
+                      style={{ background: "#FBF7F2" }}
+                    >
                       {offering.icon}
                     </div>
                     <Badge variant="default" className="text-xs">
                       {offering.badge}
                     </Badge>
                   </div>
-                  <h2 className="font-heading text-2xl text-charcoal-700 mb-1">
+                  <h2 className="font-heading text-2xl mb-1" style={{ color: "#231E1A" }}>
                     {offering.title}
                   </h2>
-                  <p className="text-sm font-medium text-sage-600 mb-3">
+                  <p className="text-sm font-medium mb-3" style={{ color: "#B87D3B" }}>
                     {offering.subtitle}
                   </p>
-                  <p className="text-charcoal-500 leading-relaxed mb-6">
+                  <p className="leading-relaxed mb-6" style={{ color: "#7B6B5B" }}>
                     {offering.description}
                   </p>
                   <Link href={offering.href}>
-                    <Button variant="outline" size="sm" className="group-hover:border-forest group-hover:text-forest transition-colors">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      style={{ borderColor: "#E4D8C8", color: "#6B4A2A" }}
+                    >
                       {offering.cta}
                       <ArrowRight size={14} className="ml-1.5" aria-hidden="true" />
                     </Button>
                   </Link>
                 </div>
                 {offering.highlights && (
-                  <div className={offering.featured ? "md:w-64 mt-6 md:mt-0" : "mt-6 pt-6 border-t border-border"}>
-                    <p className="text-xs uppercase tracking-widest text-charcoal-400 mb-3">
+                  <div
+                    className={offering.featured ? "md:w-64 mt-6 md:mt-0" : "mt-6 pt-6 border-t"}
+                    style={{ borderColor: "#E4D8C8" }}
+                  >
+                    <p
+                      className="text-xs uppercase tracking-widest mb-3"
+                      style={{ color: "#B0A090" }}
+                    >
                       Includes
                     </p>
                     <ul className="space-y-2" role="list">
                       {offering.highlights.map((h) => (
-                        <li key={h} className="flex items-center gap-2 text-sm text-charcoal-600">
-                          <span className="w-1.5 h-1.5 bg-sage-400 rounded-full flex-shrink-0" aria-hidden="true" />
+                        <li key={h} className="flex items-center gap-2 text-sm" style={{ color: "#5A4E44" }}>
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{ background: "#C8913A" }}
+                            aria-hidden="true"
+                          />
                           {h}
                         </li>
                       ))}
@@ -190,18 +199,19 @@ export default function OfferingsPage() {
 
       {/* CTA */}
       <section
-        className="py-16 px-4 text-center"
-        style={{ background: "#334B2C" }}
+        className="py-16 px-4 text-center relative overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #3A2616 0%, #4A3220 50%, #5C4432 100%)" }}
         aria-labelledby="offerings-cta"
       >
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto relative">
           <h2
             id="offerings-cta"
-            className="font-heading text-3xl text-ivory mb-4"
+            className="font-heading text-3xl mb-4"
+            style={{ color: "#FBF7F2" }}
           >
             Not sure where to start?
           </h2>
-          <p className="text-ivory/70 mb-8">
+          <p className="mb-8" style={{ color: "rgba(251,247,242,0.65)" }}>
             The 7-Day Journey is designed for exactly that — a gentle, structured beginning that touches all of our practices.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -209,7 +219,10 @@ export default function OfferingsPage() {
               <Button variant="accent">Start the journey</Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" className="border-ivory/40 text-ivory hover:bg-white/10">
+              <Button
+                variant="outline"
+                style={{ borderColor: "rgba(251,247,242,0.4)", color: "#FBF7F2" }}
+              >
                 Ask us anything
               </Button>
             </Link>

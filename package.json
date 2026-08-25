@@ -3,22 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:push": "prisma db push",
+    "db:generate": "node node_modules/prisma/build/index.js generate",
+    "db:push": "node node_modules/prisma/build/index.js db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "db:studio": "node node_modules/prisma/build/index.js studio",
+    "postinstall": "node node_modules/prisma/build/index.js generate"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.11.3",
+    "@auth/prisma-adapter": "^2.7.0",
     "@hookform/resolvers": "^5.9.1",
-    "@prisma/adapter-pg": "^7.9.1",
-    "@prisma/client": "^7.9.1",
+    "@prisma/client": "^6.19.3",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -27,8 +25,7 @@
     "lucide-react": "^1.32.0",
     "next": "16.3.1",
     "next-auth": "^5.0.0-beta.32",
-    "pg": "^8.23.0",
-    "prisma": "^7.9.1",
+    "prisma": "^6.11.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-hook-form": "^7.85.0",
@@ -36,16 +33,15 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.0.17",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
-    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.0.17",
     "tsx": "^4.23.12",
     "typescript": "^5"
   }

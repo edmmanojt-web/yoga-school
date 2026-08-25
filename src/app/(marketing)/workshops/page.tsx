@@ -53,42 +53,51 @@ export default function WorkshopsPage() {
     <>
       <section
         className="section-padding"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #F4EFE3 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="workshops-heading"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-sage-500 font-medium mb-4">
+          <p
+            className="font-semibold mb-4"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+          >
             Deeper Exploration
           </p>
-          <h1 id="workshops-heading" className="font-heading text-charcoal-700 mb-6">
+          <h1 id="workshops-heading" className="font-heading mb-6" style={{ color: "#231E1A" }}>
             Workshops & Programs
           </h1>
-          <p className="text-charcoal-500 text-lg max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: "#7B6B5B" }}>
             For those who want to go deeper. Focused workshops, short programs,
             and multi-day explorations of yoga, breathwork, and awareness.
           </p>
         </div>
       </section>
 
-      <section className="section-padding bg-white" aria-label="Workshop listings">
+      <section className="section-padding bg-[#FEFCF9]" aria-label="Workshop listings">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {workshops.map((w) => (
               <Card key={w.title} variant="elevated" className="relative">
                 {w.status === "coming-soon" && (
                   <div className="absolute top-4 right-4">
-                    <span className="text-xs bg-beige-200 text-charcoal-500 px-2.5 py-1 rounded-full border border-border">
+                    <span
+                      className="text-xs px-2.5 py-1 rounded-full border"
+                      style={{ background: "#F6EFE6", color: "#7B6B5B", borderColor: "#E4D8C8" }}
+                    >
                       Coming soon
                     </span>
                   </div>
                 )}
                 <CardContent className="p-6">
-                  <span className="text-xs font-medium text-sage-600 uppercase tracking-wider">
+                  <span
+                    className="text-xs font-medium uppercase tracking-wider"
+                    style={{ color: "#B87D3B" }}
+                  >
                     {w.type}
                   </span>
-                  <h3 className="font-heading text-charcoal-700 text-xl mt-2 mb-3">{w.title}</h3>
-                  <p className="text-sm text-charcoal-500 leading-relaxed mb-4">{w.description}</p>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <h3 className="font-heading text-xl mt-2 mb-3" style={{ color: "#231E1A" }}>{w.title}</h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#7B6B5B" }}>{w.description}</p>
+                  <div className="flex items-center gap-3 text-xs" style={{ color: "#B0A090" }}>
                     <span>{w.duration}</span>
                     <span>·</span>
                     <span>{w.mode}</span>
@@ -98,12 +107,15 @@ export default function WorkshopsPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12 py-10 bg-muted rounded-3xl">
-            <p className="font-heading text-charcoal-700 text-xl mb-2">
+          <div
+            className="text-center mt-12 py-10 rounded-3xl"
+            style={{ background: "#F6EFE6" }}
+          >
+            <p className="font-heading text-xl mb-2" style={{ color: "#231E1A" }}>
               Interested in a workshop or program?
             </p>
-            <p className="text-charcoal-500 mb-6">
-              Get in touch and we'll let you know when the next one is scheduled.
+            <p className="mb-6" style={{ color: "#7B6B5B" }}>
+              Get in touch and we&rsquo;ll let you know when the next one is scheduled.
             </p>
             <Link href="/contact?interest=Workshop">
               <Button variant="primary">

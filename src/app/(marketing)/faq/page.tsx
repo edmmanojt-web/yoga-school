@@ -97,43 +97,49 @@ export default function FAQPage() {
     <>
       <section
         className="section-padding-sm"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #F4EFE3 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="faq-heading"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-8">
-          <h1 id="faq-heading" className="font-heading text-charcoal-700 mb-3">
+          <h1 id="faq-heading" className="font-heading mb-3" style={{ color: "#231E1A" }}>
             Frequently Asked Questions
           </h1>
-          <p className="text-charcoal-500">
+          <p style={{ color: "#7B6B5B" }}>
             Common questions about yoga, breathwork, mindfulness and the 7-Day
             Awareness Journey.
           </p>
         </div>
       </section>
 
-      <section className="section-padding bg-white" aria-label="FAQ content">
+      <section className="section-padding bg-[#FEFCF9]" aria-label="FAQ content">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {faqs.map((section) => (
             <div key={section.category} className="mb-12">
-              <h2 className="font-heading text-sage-600 text-xl mb-6 pb-2 border-b border-border">
+              <h2
+                className="font-heading text-xl mb-6 pb-2 border-b"
+                style={{ color: "#C8913A", borderColor: "#E4D8C8" }}
+              >
                 {section.category}
               </h2>
               <dl className="space-y-6">
                 {section.questions.map((faq) => (
                   <div key={faq.q}>
-                    <dt className="font-medium text-charcoal-700 mb-1.5">{faq.q}</dt>
-                    <dd className="text-sm text-charcoal-500 leading-relaxed">{faq.a}</dd>
+                    <dt className="font-medium mb-1.5" style={{ color: "#231E1A" }}>{faq.q}</dt>
+                    <dd className="text-sm leading-relaxed" style={{ color: "#7B6B5B" }}>{faq.a}</dd>
                   </div>
                 ))}
               </dl>
             </div>
           ))}
 
-          <div className="text-center py-10 bg-muted rounded-3xl mt-8">
-            <p className="text-charcoal-700 font-heading text-xl mb-2">
+          <div
+            className="text-center py-10 rounded-3xl mt-8"
+            style={{ background: "#F6EFE6" }}
+          >
+            <p className="font-heading text-xl mb-2" style={{ color: "#231E1A" }}>
               Still have questions?
             </p>
-            <p className="text-charcoal-500 mb-6">We're happy to help.</p>
+            <p className="mb-6" style={{ color: "#7B6B5B" }}>We&rsquo;re happy to help.</p>
             <Link href="/contact">
               <Button variant="primary">
                 Get in touch

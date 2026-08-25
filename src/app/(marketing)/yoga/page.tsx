@@ -52,17 +52,20 @@ export default function YogaPage() {
       {/* Hero */}
       <section
         className="section-padding"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #F4EFE3 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="yoga-heading"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-sage-500 font-medium mb-4">
+          <p
+            className="font-semibold mb-4"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+          >
             Practice
           </p>
-          <h1 id="yoga-heading" className="font-heading text-charcoal-700 mb-6">
+          <h1 id="yoga-heading" className="font-heading mb-6" style={{ color: "#231E1A" }}>
             Yoga
           </h1>
-          <p className="text-lg text-charcoal-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "#7B6B5B" }}>
             Yoga as a practice of movement, breath, and awareness. Classes for
             beginners through to regular practitioners — online and in-person.
           </p>
@@ -70,33 +73,33 @@ export default function YogaPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="section-padding bg-white" aria-labelledby="yoga-philosophy">
+      <section className="section-padding bg-[#FEFCF9]" aria-labelledby="yoga-philosophy">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="yoga-philosophy" className="font-heading text-charcoal-700 mb-4">
+              <h2 id="yoga-philosophy" className="font-heading mb-4" style={{ color: "#231E1A" }}>
                 The approach
               </h2>
-              <p className="text-charcoal-500 leading-relaxed mb-4">
+              <p className="leading-relaxed mb-4" style={{ color: "#7B6B5B" }}>
                 Our approach to yoga is grounded and unhurried. We are less
                 interested in achieving a perfect posture, and more interested
                 in what happens when you pay careful attention to the process of
                 moving and breathing.
               </p>
-              <p className="text-charcoal-500 leading-relaxed">
+              <p className="leading-relaxed" style={{ color: "#7B6B5B" }}>
                 Classes are designed to be accessible — regardless of your
                 flexibility, experience level, or how yoga looks on your body.
               </p>
             </div>
             <div
               className="aspect-square rounded-3xl flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #E8DFC8, #D9CDB4)" }}
+              style={{ background: "linear-gradient(135deg, #E4D8C8, #D4C8B0)" }}
               role="img"
               aria-label="Yoga practice image placeholder"
             >
               <div className="text-center">
                 <div className="text-6xl mb-3" aria-hidden="true">🧘</div>
-                <p className="text-charcoal-400 text-sm">[Photo]</p>
+                <p className="text-sm" style={{ color: "#B0A090" }}>[Photo]</p>
               </div>
             </div>
           </div>
@@ -104,13 +107,13 @@ export default function YogaPage() {
       </section>
 
       {/* Classes */}
-      <section className="section-padding bg-muted" aria-labelledby="yoga-classes">
+      <section className="section-padding" style={{ background: "#F6EFE6" }} aria-labelledby="yoga-classes">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 id="yoga-classes" className="font-heading text-charcoal-700 mb-3">
+            <h2 id="yoga-classes" className="font-heading mb-3" style={{ color: "#231E1A" }}>
               Classes & sessions
             </h2>
-            <p className="text-charcoal-500">
+            <p style={{ color: "#7B6B5B" }}>
               [Actual class schedule and pricing to be added]
             </p>
           </div>
@@ -119,15 +122,18 @@ export default function YogaPage() {
               <Card key={c.title} variant="elevated">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-heading text-charcoal-700 text-xl">{c.title}</h3>
-                    <span className="text-xs bg-sage-100 text-sage-700 px-2.5 py-1 rounded-full">
+                    <h3 className="font-heading text-xl" style={{ color: "#231E1A" }}>{c.title}</h3>
+                    <span
+                      className="text-xs px-2.5 py-1 rounded-full"
+                      style={{ background: "rgba(200,145,58,0.1)", color: "#C8913A" }}
+                    >
                       {c.level}
                     </span>
                   </div>
-                  <p className="text-sm text-charcoal-500 leading-relaxed mb-5">
+                  <p className="text-sm leading-relaxed mb-5" style={{ color: "#7B6B5B" }}>
                     {c.description}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-4 text-xs" style={{ color: "#B0A090" }}>
                     <span className="flex items-center gap-1.5">
                       <Clock size={12} aria-hidden="true" />
                       {c.duration}
@@ -145,13 +151,13 @@ export default function YogaPage() {
       </section>
 
       {/* Teacher */}
-      <section className="section-padding bg-white" aria-labelledby="yoga-teacher">
+      <section className="section-padding bg-[#FEFCF9]" aria-labelledby="yoga-teacher">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 id="yoga-teacher" className="font-heading text-charcoal-700 mb-4">
+          <h2 id="yoga-teacher" className="font-heading mb-4" style={{ color: "#231E1A" }}>
             Your teacher
           </h2>
-          <p className="text-xl font-heading text-sage-600 mb-3">{teacherConfig.name}</p>
-          <p className="text-charcoal-500 leading-relaxed mb-8">
+          <p className="text-xl font-heading mb-3" style={{ color: "#C8913A" }}>{teacherConfig.name}</p>
+          <p className="leading-relaxed mb-8" style={{ color: "#7B6B5B" }}>
             {teacherConfig.shortBio}
           </p>
           <Link href="/about">
@@ -166,11 +172,11 @@ export default function YogaPage() {
       {/* CTA */}
       <section
         className="section-padding-sm"
-        style={{ background: "linear-gradient(135deg, #334B2C, #26231E)" }}
+        style={{ background: "linear-gradient(160deg, #3A2616 0%, #4A3220 50%, #5C4432 100%)" }}
         aria-label="Call to action"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-heading text-ivory mb-6">Ready to begin?</h2>
+          <h2 className="font-heading mb-6" style={{ color: "#FBF7F2" }}>Ready to begin?</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/schedule">
               <Button variant="accent" size="lg">
@@ -182,7 +188,7 @@ export default function YogaPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-ivory/30 text-ivory hover:bg-white/10"
+                style={{ borderColor: "rgba(251,247,242,0.3)", color: "#FBF7F2" }}
               >
                 Ask a question
               </Button>

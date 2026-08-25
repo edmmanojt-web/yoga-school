@@ -15,7 +15,7 @@ export default function MindfulnessPage() {
     {
       title: "Mindfulness Basics",
       description:
-        "An introduction to mindfulness — what it is, what it isn't, and how to begin noticing.",
+        "An introduction to mindfulness — what it is, what it isn&rsquo;t, and how to begin noticing.",
       mode: "Online",
       duration: "45 min",
     },
@@ -47,17 +47,20 @@ export default function MindfulnessPage() {
       {/* Hero */}
       <section
         className="section-padding"
-        style={{ background: "linear-gradient(135deg, #FAF7F0 0%, #F2F5F0 100%)" }}
+        style={{ background: "linear-gradient(135deg, #FBF7F2 0%, #F2E8DA 100%)" }}
         aria-labelledby="mindfulness-heading"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-sage-500 font-medium mb-4">
+          <p
+            className="font-semibold mb-4"
+            style={{ fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#B87D3B" }}
+          >
             Practice
           </p>
-          <h1 id="mindfulness-heading" className="font-heading text-charcoal-700 mb-6">
+          <h1 id="mindfulness-heading" className="font-heading mb-6" style={{ color: "#231E1A" }}>
             Mindfulness & Meditation
           </h1>
-          <p className="text-lg text-charcoal-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "#7B6B5B" }}>
             The practice of paying attention to what is actually happening —
             without judgment, without agenda. A skill that improves with
             patient practice.
@@ -66,17 +69,17 @@ export default function MindfulnessPage() {
       </section>
 
       {/* What is mindfulness */}
-      <section className="section-padding bg-white" aria-labelledby="mindfulness-about">
+      <section className="section-padding bg-[#FEFCF9]" aria-labelledby="mindfulness-about">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 id="mindfulness-about" className="font-heading text-charcoal-700 mb-4">
+              <h2 id="mindfulness-about" className="font-heading mb-4" style={{ color: "#231E1A" }}>
                 Not emptying the mind
               </h2>
-              <div className="space-y-4 text-charcoal-500 leading-relaxed text-sm">
+              <div className="space-y-4 leading-relaxed text-sm" style={{ color: "#7B6B5B" }}>
                 <p>
                   A common misconception about mindfulness and meditation is
-                  that the goal is to stop thinking. It isn't.
+                  that the goal is to stop thinking. It isn&rsquo;t.
                 </p>
                 <p>
                   The practice is about noticing — the breath, the body, the
@@ -91,13 +94,13 @@ export default function MindfulnessPage() {
             </div>
             <div
               className="aspect-square rounded-3xl flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, #F2F5F0, #E0E8DB)" }}
+              style={{ background: "linear-gradient(135deg, #E4D8C8, #D4C8B0)" }}
               role="img"
               aria-label="Mindfulness practice image"
             >
               <div className="text-center">
                 <div className="text-6xl mb-3" aria-hidden="true">🌿</div>
-                <p className="text-charcoal-400 text-sm">[Photo]</p>
+                <p className="text-sm" style={{ color: "#B0A090" }}>[Photo]</p>
               </div>
             </div>
           </div>
@@ -105,10 +108,10 @@ export default function MindfulnessPage() {
       </section>
 
       {/* Practices */}
-      <section className="section-padding bg-muted" aria-labelledby="mindfulness-practices">
+      <section className="section-padding" style={{ background: "#F6EFE6" }} aria-labelledby="mindfulness-practices">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 id="mindfulness-practices" className="font-heading text-charcoal-700">
+            <h2 id="mindfulness-practices" className="font-heading" style={{ color: "#231E1A" }}>
               Sessions & practices
             </h2>
           </div>
@@ -116,9 +119,9 @@ export default function MindfulnessPage() {
             {practices.map((p) => (
               <Card key={p.title} variant="elevated">
                 <CardContent className="p-6">
-                  <h3 className="font-heading text-charcoal-700 text-xl mb-2">{p.title}</h3>
-                  <p className="text-sm text-charcoal-500 leading-relaxed mb-4">{p.description}</p>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <h3 className="font-heading text-xl mb-2" style={{ color: "#231E1A" }}>{p.title}</h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#7B6B5B" }}>{p.description}</p>
+                  <div className="flex items-center gap-3 text-xs" style={{ color: "#B0A090" }}>
                     <span>{p.duration}</span>
                     <span>·</span>
                     <span>{p.mode}</span>
@@ -133,11 +136,11 @@ export default function MindfulnessPage() {
       {/* CTA */}
       <section
         className="section-padding-sm"
-        style={{ background: "linear-gradient(135deg, #334B2C, #26231E)" }}
+        style={{ background: "linear-gradient(160deg, #3A2616 0%, #4A3220 50%, #5C4432 100%)" }}
         aria-label="Mindfulness call to action"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-heading text-ivory mb-6">Begin the practice</h2>
+          <h2 className="font-heading mb-6" style={{ color: "#FBF7F2" }}>Begin the practice</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/schedule">
               <Button variant="accent" size="lg">
@@ -149,7 +152,7 @@ export default function MindfulnessPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-ivory/30 text-ivory hover:bg-white/10"
+                style={{ borderColor: "rgba(251,247,242,0.3)", color: "#FBF7F2" }}
               >
                 Try the 7-Day Journey
               </Button>

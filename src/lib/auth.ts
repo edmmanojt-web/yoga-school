@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { loginSchema } from "@/validations";
@@ -13,6 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/login",
   },
   providers: [
+    Google,
     Credentials({
       name: "credentials",
       credentials: {
@@ -56,11 +58,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
-        token.role = (user as any).role;
-        token.preferredLanguage = (user as any).preferredLanguage;
+        token.role = (user as any).role ?? "USER";
+        token.preferredLanguage = (user as any).preferredLanguage ?? "en";
       }
       return token;
     },

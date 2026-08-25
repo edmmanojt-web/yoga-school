@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "elevated" | "outlined" | "featured";
+  variant?: "default" | "elevated" | "outlined" | "featured" | "glass";
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
@@ -10,11 +10,14 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "rounded-2xl",
+        "rounded-2xl transition-all duration-300",
         variant === "default" && "bg-card border border-border",
-        variant === "elevated" && "bg-card shadow-md hover:shadow-lg transition-shadow duration-200",
+        variant === "elevated" &&
+          "bg-card border border-border/60 shadow-[0_2px_16px_rgba(28,26,22,0.06)] hover:shadow-[0_8px_32px_rgba(28,26,22,0.12)] hover:-translate-y-0.5",
         variant === "outlined" && "border border-border bg-transparent",
-        variant === "featured" && "bg-forest text-ivory border-0",
+        variant === "featured" && "bg-forest text-ivory border-0 shadow-[0_4px_24px_rgba(45,74,35,0.25)]",
+        variant === "glass" &&
+          "bg-white/60 backdrop-blur-xl border border-white/70 shadow-[0_4px_24px_rgba(28,26,22,0.06)]",
         className
       )}
       {...props}

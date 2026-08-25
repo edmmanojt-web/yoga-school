@@ -9,8 +9,9 @@ import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { NagaInfinityMark } from "@/components/ui/logo";
+import { CheckCircle } from "lucide-react";
 
 const resetSchema = z
   .object({
@@ -49,6 +50,10 @@ function ResetPasswordForm() {
     return (
       <Card variant="elevated" className="w-full max-w-sm">
         <CardContent className="p-8 text-center">
+          <Link href="/" className="inline-flex flex-col items-center gap-2 mb-4" aria-label={siteConfig.name}>
+            <NagaInfinityMark size={36} />
+            <span className="font-heading italic tracking-[0.1em] text-xl" style={{ color: "#6B4A2A" }}>{siteConfig.name}</span>
+          </Link>
           <p className="text-charcoal-600 mb-4">This reset link is invalid or has expired.</p>
           <Link href="/forgot-password">
             <Button variant="outline" size="sm">Request a new link</Button>
@@ -62,7 +67,11 @@ function ResetPasswordForm() {
     return (
       <Card variant="elevated" className="w-full max-w-sm">
         <CardContent className="p-8 text-center">
-          <CheckCircle size={32} className="text-sage-500 mx-auto mb-4" aria-hidden="true" />
+          <Link href="/" className="inline-flex flex-col items-center gap-2 mb-4" aria-label={siteConfig.name}>
+            <NagaInfinityMark size={36} />
+            <span className="font-heading italic tracking-[0.1em] text-xl" style={{ color: "#6B4A2A" }}>{siteConfig.name}</span>
+          </Link>
+          <CheckCircle size={32} className="text-sage-500 mx-auto mb-3" aria-hidden="true" />
           <h1 className="font-heading text-charcoal-700 text-xl mb-2">Password updated</h1>
           <p className="text-sm text-charcoal-500 mb-6">
             Your password has been reset. You can now sign in.
@@ -98,8 +107,9 @@ function ResetPasswordForm() {
     <Card variant="elevated" className="w-full max-w-sm">
       <CardContent className="p-8">
         <div className="text-center mb-8">
-          <Link href="/" className="font-heading text-2xl text-charcoal-700" aria-label={siteConfig.name}>
-            🌿 {siteConfig.name}
+          <Link href="/" className="inline-flex flex-col items-center gap-2" aria-label={siteConfig.name}>
+            <NagaInfinityMark size={36} />
+            <span className="font-heading italic tracking-[0.1em] text-xl" style={{ color: "#6B4A2A" }}>{siteConfig.name}</span>
           </Link>
           <h1 className="font-heading text-charcoal-700 text-2xl mt-4 mb-2">
             Reset password

@@ -3,30 +3,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer select-none",
   {
     variants: {
       variant: {
         primary:
-          "bg-forest text-ivory hover:bg-forest/90 active:scale-[0.98]",
+          "bg-forest text-ivory shadow-[0_2px_12px_rgba(107,74,42,0.25)] hover:bg-forest/85 hover:shadow-[0_4px_20px_rgba(107,74,42,0.35)] active:scale-[0.97]",
         secondary:
-          "bg-secondary text-charcoal-700 border border-border hover:bg-beige-200 active:scale-[0.98]",
+          "bg-beige text-charcoal border border-border hover:bg-beige/80 active:scale-[0.97]",
         outline:
-          "border border-forest text-forest hover:bg-forest hover:text-ivory active:scale-[0.98]",
+          "border border-forest/60 text-forest hover:bg-forest hover:text-ivory hover:border-forest active:scale-[0.97]",
         ghost:
-          "text-charcoal hover:bg-muted active:scale-[0.98]",
+          "text-charcoal/75 hover:text-charcoal hover:bg-muted active:scale-[0.97]",
         accent:
-          "bg-terracotta text-ivory hover:bg-terracotta-600 active:scale-[0.98]",
+          "bg-terracotta text-ivory shadow-[0_2px_12px_rgba(200,145,58,0.28)] hover:bg-terracotta/85 hover:shadow-[0_4px_20px_rgba(200,145,58,0.38)] active:scale-[0.97]",
         link:
           "text-forest underline-offset-4 hover:underline p-0 h-auto",
         destructive:
-          "bg-red-600 text-white hover:bg-red-700 active:scale-[0.98]",
+          "bg-red-600 text-white hover:bg-red-700 shadow-sm active:scale-[0.97]",
       },
       size: {
-        sm: "h-9 px-4 text-sm",
+        sm: "h-9 px-4 text-xs tracking-wide",
         md: "h-11 px-6 text-sm",
-        lg: "h-13 px-8 text-base",
-        xl: "h-14 px-10 text-base",
+        lg: "h-[52px] px-8 text-base",
+        xl: "h-14 px-10 text-base tracking-wide",
         icon: "h-10 w-10",
       },
     },

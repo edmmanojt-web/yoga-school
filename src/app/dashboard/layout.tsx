@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { auth } from "@/lib/auth";
+import { LogOut } from "lucide-react";
+import { auth, signOut } from "@/lib/auth";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
@@ -49,6 +50,23 @@ export default async function DashboardLayout({
                     </li>
                   ))}
                 </ul>
+                <div className="mt-6 pt-4 border-t border-[#E4D8C8]">
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signOut({ redirectTo: "/" });
+                    }}
+                  >
+                    <button
+                      type="submit"
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm text-[#7B6B5B] hover:bg-white hover:text-[#6B4A2A] transition-colors"
+                      aria-label="Sign out"
+                    >
+                      <LogOut size={15} aria-hidden="true" />
+                      Sign out
+                    </button>
+                  </form>
+                </div>
               </nav>
             </aside>
             <main

@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { forgotPasswordSchema, type LoginInput } from "@/validations";
 import { CheckCircle } from "lucide-react";
 import { z } from "zod";
+import { siteConfig } from "@/config/site";
+import { NagaInfinityMark } from "@/components/ui/logo";
 
 type ForgotInput = z.infer<typeof forgotPasswordSchema>;
 
@@ -33,7 +35,11 @@ export default function ForgotPasswordPage() {
     return (
       <div className="w-full max-w-md">
         <div className="bg-card rounded-3xl border border-border p-8 shadow-md text-center">
-          <CheckCircle size={40} className="text-sage-500 mx-auto mb-4" aria-hidden="true" />
+          <Link href="/" className="inline-flex flex-col items-center gap-2 mb-5" aria-label={siteConfig.name}>
+            <NagaInfinityMark size={36} />
+            <span className="font-heading italic tracking-[0.1em] text-xl" style={{ color: "#6B4A2A" }}>{siteConfig.name}</span>
+          </Link>
+          <CheckCircle size={36} className="text-sage-500 mx-auto mb-3" aria-hidden="true" />
           <h1 className="font-heading text-charcoal-700 text-2xl mb-2">Check your email</h1>
           <p className="text-muted-foreground text-sm">
             If an account exists with that email address, you'll receive a
@@ -53,8 +59,9 @@ export default function ForgotPasswordPage() {
     <div className="w-full max-w-md">
       <div className="bg-card rounded-3xl border border-border p-8 shadow-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-3xl mb-4" aria-label="Home">
-            🌿
+          <Link href="/" className="inline-flex flex-col items-center gap-2 mb-4" aria-label={siteConfig.name}>
+            <NagaInfinityMark size={36} />
+            <span className="font-heading italic tracking-[0.1em] text-xl" style={{ color: "#6B4A2A" }}>{siteConfig.name}</span>
           </Link>
           <h1 className="font-heading text-charcoal-700 text-2xl">Forgot your password?</h1>
           <p className="text-muted-foreground text-sm mt-1">
