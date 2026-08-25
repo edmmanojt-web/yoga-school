@@ -54,7 +54,7 @@ RESEND_API_KEY=""
 FROM_EMAIL="noreply@yourdomain.com"
 
 # Optional: external yoga-agent service
-# If set, /api/guide proxies guide requests to this service.
+# If set, /api/guide proxies guide requests to the FastAPI yoga-agent service.
 # If omitted, yoga-school uses its in-app guide engine.
 GUIDE_AGENT_URL="http://127.0.0.1:8787"
 ```
