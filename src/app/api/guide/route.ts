@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { buildGuideReply } from "@/lib/guide/engine";
 
+const externalGuideUrl = process.env.GUIDE_AGENT_URL?.trim().replace(/\/$/, "") ?? "";
+
 const guideRequestSchema = z.object({
   message: z.string().min(1).max(2000),
   history: z
@@ -40,7 +42,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid guide request." }, { status: 400 });
     }
 
-    const reply = await buildGuideReply(parsed.data);
+    const reply = externalGuideUrl
+      ? await fetchExternalGuideReply(parsed.data)
+      : await buildGuideReply(parsed.data);
+
     return NextResponse.json({ success: true, data: reply });
   } catch {
     return NextResponse.json(
@@ -61,5 +66,36 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     );
+  }
+}
+
+async function fetchExternalGuideReply(payload: z.infer<typeof guideRequestSchema>) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+
+  try {
+    const response = await fetch(`${externalGuideUrl}/api/guide`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error("External guide request failed");
+    }
+
+    const data = await response.json();
+
+    if (!data || typeof data !== "object" || !("answer" in data)) {
+      throw new Error("External guide payload invalid");
+    }
+
+    return data;
+  } catch {
+    return buildGuideReply(payload);
+  } finally {
+    clearTimeout(timeout);
   }
 }
